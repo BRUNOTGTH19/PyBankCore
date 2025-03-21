@@ -1,0 +1,55 @@
+nome = input("digite aqui seu nome: ")
+while not nome:
+    print("Você não digitou nenhum nome")
+    nome = input("digite aqui seu nome: ")
+
+print("Obrigado", nome, "vamos te dar algumas opções")
+
+saldo = 1000.00  # Inicialização do saldo
+
+while True:
+    print("\n1. Extrato")
+    print("2. Transferência")
+    print("3. Depósito")
+    print("4. Saque")
+
+    operacao = input("Escolha uma das opções de 1 a 4: ")
+
+    if operacao == "1":
+        print(f"Seu saldo atual é: R$ {saldo:.2f}")
+
+    elif operacao == "2":
+        valor = float(input("Digite o valor que deseja transferir: "))
+        if valor > 0 and valor <= saldo:  # Linha 26 corrigida
+            saldo -= valor
+            print(f"Transferência de R$ {valor:.2f} realizada com sucesso.")
+            print(f"Seu saldo atual é: R$ {saldo:.2f}")
+        else:
+            print("Valor inválido ou saldo insuficiente.")
+
+    elif operacao == "3":
+        valor = float(input("Digite o valor que deseja depositar: "))
+        if valor > 0:
+            saldo += valor
+            print(f"Depósito de R$ {valor:.2f} realizado com sucesso.")
+            print(f"Seu saldo atual é: R$ {saldo:.2f}")
+        else:
+            print("Valor inválido.")
+
+    elif operacao == "4":
+        valor = float(input("Digite o valor que deseja sacar: "))
+        if valor > 0 and valor <= saldo:  # Linha 26 corrigida
+            saldo -= valor
+            print(f"Saque de R$ {valor:.2f} realizado com sucesso.")
+            print(f"Seu saldo atual é: R$ {saldo:.2f}")
+        else:
+            print("Valor inválido ou saldo insuficiente.")
+
+    else:
+        print("Operação inválida.")
+
+    operacao_complementar = input("Deseja fazer alguma outra operação? (sim/não): ")
+    if operacao_complementar.lower() != "sim":
+        print("Obrigado por utilizar nossos serviços.")
+        break
+
